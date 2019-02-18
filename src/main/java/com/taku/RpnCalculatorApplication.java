@@ -23,15 +23,10 @@ public class RpnCalculatorApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        try {
-            client.getOutput().accept("Command-line reverse polish notation calculator\n> ");
-            for (String line = client.getInput().get(); !line.contains(EXIT_CMD); line = client.getInput().get()) {
-                client.getOutput().accept(calculator.calculate(line));
-                client.getOutput().accept("\n> ");
-            }
-        } catch (Exception e) {
-            System.out.println("Got an exception: " + e.getMessage());
-            e.printStackTrace();
+        client.getOutput().accept("Command-line reverse polish notation calculator\n> ");
+        for (String line = client.getInput().get(); !line.contains(EXIT_CMD); line = client.getInput().get()) {
+            client.getOutput().accept(calculator.calculate(line));
+            client.getOutput().accept("\n> ");
         }
     }
 
